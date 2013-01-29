@@ -247,6 +247,10 @@ def get_tweets(queries, attemps=10, wait=5):
 def get_tweet(query, attempts=10, wait=5):
     count = 0
     while True:
+        if count > attempts:
+            print 'maximum attempts have been reached (%d) for query: %s' % (attempts, query)
+            break
+        # get tweets
         try:
             tweet = urllib2.urlopen(query)
         except urllib2.HTTPError, herr:
@@ -258,9 +262,7 @@ def get_tweet(query, attempts=10, wait=5):
             print "Unknown erro:", err
             sleeper(wait)
             continue
-        if count > attempts:
-            print 'maximum attempts have been reached (%d) for query: %s' % (attempts, query)
-            break
+        # quit collecting tweets
         break
     print "Found tweets for query '%s'" % query
     return tweet
