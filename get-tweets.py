@@ -110,7 +110,10 @@ def main(query_settings):
     datetime_format = query_settings['datetime_format']
 
     # make sure params are set
-    params['format'] = 'json'   # until we can parse other formats
+    if params.has_key('format'):
+        # API changes require that the format is part of the url path and
+        # not in the params
+        del params['format']
 
     # get existing results
     csv_file = output['name']
