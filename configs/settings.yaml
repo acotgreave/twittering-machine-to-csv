@@ -4,7 +4,7 @@
 #       adding to the query yaml (excluded options,
 #       will default to the values in this yaml)
 settings:
-    search_url: 'http://search.twitter.com/search.yaml'
+    search_url: 'http://search.twitter.com/search.json'
     created_at_format: '%m/%d/%Y %H:%M:%S'
     # how the get-twitter tool is configured, with
     # max attemps and number of pages (of history)
